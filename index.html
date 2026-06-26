@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sentinel — Multilingual Hate Speech Detection powered by a fine-tuned transformer. Detect toxic content in English and Hindi with state-of-the-art AI." />
+  <meta name="keywords" content="hate speech detection, multilingual AI, NLP, toxic content detection, Hindi, English, AI content moderation" />
+  <meta name="author" content="inpersonin" />
+  <meta property="og:title" content="Sentinel — Hate Speech Detection" />
+  <meta property="og:description" content="Real-time multilingual hate speech detection for English and Hindi." />
+  <meta property="og:type" content="website" />
+  <title>Sentinel — Hate Speech Detection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- Animated Background -->
+  <div class="bg-canvas" aria-hidden="true">
+    <canvas id="particleCanvas"></canvas>
+    <div class="bg-gradient-orb orb-1"></div>
+    <div class="bg-gradient-orb orb-2"></div>
+    <div class="bg-gradient-orb orb-3"></div>
+    <div class="ambient-lines">
+      <div class="aline aline-1"></div>
+      <div class="aline aline-2"></div>
+      <div class="aline aline-3"></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Sentinel Home">
+        <span class="logo-icon" aria-hidden="true">◈</span>
+        <span class="logo-text">SENTINEL</span>
+      </a>
+      <div class="nav-links" role="list">
+        <a href="#detect" class="nav-link" role="listitem">Detect</a>
+        <a href="#model" class="nav-link" role="listitem">Model</a>
+        <a href="#pipeline" class="nav-link" role="listitem">Pipeline</a>
+        <a href="#tech" class="nav-link" role="listitem">Stack</a>
+      </div>
+      <a href="#detect" class="nav-cta magnetic-btn" aria-label="Try the detector now">
+        <span>Try Now</span>
+        <span class="btn-glow" aria-hidden="true"></span>
+      </a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ═══════════════════════ HERO SECTION ═══════════════════════ -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="hero-badge reveal-up">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span>Advanced Transformer Model · Production Ready</span>
+        </div>
+        <h1 class="hero-title reveal-up" id="hero-title">
+          <span class="title-line">Multilingual</span>
+          <span class="title-line accent-line">Hate Speech</span>
+          <span class="title-line">Detection</span>
+        </h1>
+        <p class="hero-subtitle reveal-up">
+          A fine-tuned <span class="highlight">multilingual transformer</span> for English and Hindi.
+          Precision-engineered AI for real-world content moderation.
+        </p>
+        <div class="hero-actions reveal-up">
+          <a href="#detect" class="btn-primary magnetic-btn" aria-label="Start analyzing text">
+            <span class="btn-text">Start Analyzing</span>
+            <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="btn-glow" aria-hidden="true"></span>
+          </a>
+          <a href="#model" class="btn-ghost magnetic-btn" aria-label="View model details">
+            <span>View Model</span>
+          </a>
+        </div>
+        <div class="hero-stats reveal-up" role="list" aria-label="Model key statistics">
+          <div class="hero-stat" role="listitem">
+            <span class="stat-val">172K</span>
+            <span class="stat-label">Training Samples</span>
+          </div>
+          <div class="hero-stat-divider" aria-hidden="true"></div>
+          <div class="hero-stat" role="listitem">
+            <span class="stat-val">2</span>
+            <span class="stat-label">Languages</span>
+          </div>
+          <div class="hero-stat-divider" aria-hidden="true"></div>
+          <div class="hero-stat" role="listitem">
+            <span class="stat-val">High</span>
+            <span class="stat-label">Precision</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-glow-ring ring-1"></div>
+        <div class="hero-glow-ring ring-2"></div>
+        <div class="hero-glow-ring ring-3"></div>
+        <div class="hero-center-orb">
+          <div class="orb-core">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="38" stroke="#FF6A00" stroke-width="0.5" stroke-dasharray="4 4"/>
+              <circle cx="40" cy="40" r="28" stroke="#FF6A00" stroke-width="0.8" opacity="0.6"/>
+              <circle cx="40" cy="40" r="16" fill="#FF6A00" fill-opacity="0.15"/>
+              <path d="M28 40 L52 40 M40 28 L40 52" stroke="#FF6A00" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="40" cy="40" r="4" fill="#FF6A00"/>
+            </svg>
+          </div>
+        </div>
+        <div class="floating-chip chip-1">
+          <span class="chip-dot"></span>English
+        </div>
+        <div class="floating-chip chip-2">
+          <span class="chip-dot"></span>हिंदी
+        </div>
+      </div>
+      <div class="hero-scroll-hint" aria-label="Scroll down">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ DETECT SECTION ═══════════════════════ -->
+    <section class="section detect-section" id="detect" aria-labelledby="detect-title">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag">Detection Engine</div>
+          <h2 class="section-title" id="detect-title">Analyze Any Text</h2>
+          <p class="section-desc">Paste or type text in English or Hindi. The model will analyze and classify it with high confidence.</p>
+        </div>
+
+        <div class="detect-card reveal-scale" role="region" aria-label="Text detection interface">
+          <div class="card-border-glow" aria-hidden="true"></div>
+
+          <div class="textarea-wrapper">
+            <label for="textInput" class="input-label">Input Text</label>
+            <textarea
+              id="textInput"
+              class="text-input"
+              placeholder="Enter text in English or Hindi (हिंदी) to analyze for hate speech…"
+              rows="6"
+              maxlength="2000"
+              aria-describedby="charCounter inputHint"
+              aria-label="Text input for hate speech analysis"
+              spellcheck="true"
+            ></textarea>
+            <div class="input-meta">
+              <span class="input-hint" id="inputHint">Supports English · Hindi</span>
+              <span class="char-counter" id="charCounter" aria-live="polite" aria-label="Character count">
+                <span id="charCount">0</span> / 2000
+              </span>
+            </div>
+          </div>
+
+          <div class="detect-actions">
+            <div class="action-secondary">
+              <button class="btn-action" id="pasteBtn" aria-label="Paste text from clipboard">
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <rect x="4" y="2" width="8" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                  <rect x="2" y="4" width="8" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2" fill="#070707"/>
+                </svg>
+                <span>Paste</span>
+              </button>
+              <button class="btn-action" id="clearBtn" aria-label="Clear text input">
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <path d="M3 3l9 9M12 3l-9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span>Clear</span>
+              </button>
+              <button class="btn-action" id="exampleBtn" aria-label="Load an example text">
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                  <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M7.5 5v3.5L9.5 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+                <span>Example</span>
+              </button>
+            </div>
+            <button class="btn-analyze magnetic-btn" id="analyzeBtn" aria-label="Analyze text for hate speech">
+              <span class="analyze-text">Analyze</span>
+              <div class="analyze-spinner" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5" stroke-dasharray="22 10" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span class="btn-glow" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <!-- Result Panel -->
+          <div class="result-panel" id="resultPanel" aria-live="polite" aria-atomic="true" role="status" hidden>
+            <div class="result-divider" aria-hidden="true"></div>
+            <div class="result-content">
+              <div class="result-left">
+                <div class="verdict-badge" id="verdictBadge" aria-label="Detection result">
+                  <span class="verdict-icon" id="verdictIcon" aria-hidden="true"></span>
+                  <span class="verdict-text" id="verdictText">—</span>
+                </div>
+                <p class="result-summary" id="resultSummary"></p>
+              </div>
+              <div class="result-right">
+                <div class="confidence-ring-wrapper" aria-label="Confidence meter">
+                  <svg class="confidence-ring" viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
+                    <circle cx="60" cy="60" r="50" class="ring-track"/>
+                    <circle cx="60" cy="60" r="50" class="ring-progress" id="ringProgress"
+                      stroke-dasharray="314" stroke-dashoffset="314"/>
+                  </svg>
+                  <div class="ring-center">
+                    <span class="ring-pct" id="ringPct">0%</span>
+                    <span class="ring-label">Confidence</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="conf-bar-wrapper">
+              <div class="conf-bar-label">
+                <span>Confidence Score</span>
+                <span id="confBarPct">0%</span>
+              </div>
+              <div class="conf-bar-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Confidence level">
+                <div class="conf-bar-fill" id="confBarFill"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error Panel -->
+          <div class="error-panel" id="errorPanel" role="alert" hidden>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <circle cx="9" cy="9" r="7.5" stroke="#FF3B30" stroke-width="1.2"/>
+              <path d="M9 5.5v4M9 12v.5" stroke="#FF3B30" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span id="errorMessage">Unable to connect to the detection API. Please ensure the backend is running.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ STATS / MODEL SECTION ═══════════════════════ -->
+    <section class="section stats-section" id="model" aria-labelledby="stats-title">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag">Model Intelligence</div>
+          <h2 class="section-title" id="stats-title">Engineered for Precision</h2>
+          <p class="section-desc">State-of-the-art multilingual transformer fine-tuned on a diverse, high-quality dataset.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card reveal-up" style="--delay: 0ms" role="article" aria-label="Model type">
+            <div class="stat-card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <rect x="3" y="3" width="10" height="10" rx="2" stroke="#FF6A00" stroke-width="1.5"/>
+                <rect x="15" y="3" width="10" height="10" rx="2" stroke="#FF6A00" stroke-width="1.5" opacity="0.5"/>
+                <rect x="3" y="15" width="10" height="10" rx="2" stroke="#FF6A00" stroke-width="1.5" opacity="0.5"/>
+                <rect x="15" y="15" width="10" height="10" rx="2" stroke="#FF6A00" stroke-width="1.5"/>
+                <path d="M13 8h2M8 15v-2M20 13v2M15 20h-2" stroke="#FF6A00" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="stat-card-label">Architecture</div>
+            <div class="stat-card-val" style="font-size:20px">Transformer</div>
+            <div class="stat-card-sub">Fine-tuned for classification</div>
+          </div>
+
+          <div class="stat-card reveal-up" style="--delay: 80ms" role="article" aria-label="Supported languages">
+            <div class="stat-card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="11" stroke="#FF6A00" stroke-width="1.5"/>
+                <path d="M14 3C14 3 10 8 10 14s4 11 4 11M14 3c0 0 4 5 4 11s-4 11-4 11" stroke="#FF6A00" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M3 14h22" stroke="#FF6A00" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M4 9h20M4 19h20" stroke="#FF6A00" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+              </svg>
+            </div>
+            <div class="stat-card-label">Languages</div>
+            <div class="stat-card-val">2</div>
+            <div class="stat-card-sub">English · Hindi</div>
+          </div>
+
+          <div class="stat-card reveal-up" style="--delay: 160ms" role="article" aria-label="Training samples count">
+            <div class="stat-card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <rect x="4" y="18" width="4" height="7" rx="1" fill="#FF6A00" opacity="0.4"/>
+                <rect x="10" y="12" width="4" height="13" rx="1" fill="#FF6A00" opacity="0.6"/>
+                <rect x="16" y="7" width="4" height="18" rx="1" fill="#FF6A00" opacity="0.8"/>
+                <rect x="22" y="3" width="4" height="22" rx="1" fill="#FF6A00"/>
+              </svg>
+            </div>
+            <div class="stat-card-label">Training Samples</div>
+            <div class="stat-card-val">172,141</div>
+            <div class="stat-card-sub">Curated bilingual dataset</div>
+          </div>
+
+          <div class="stat-card stat-card-wide reveal-up" style="--delay: 240ms" role="article" aria-label="Dataset composition breakdown">
+            <div class="stat-card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="11" stroke="#FF6A00" stroke-width="1.5" stroke-dasharray="24 45" stroke-dashoffset="-5"/>
+                <circle cx="14" cy="14" r="11" stroke="#FF8A00" stroke-width="1.5" stroke-dasharray="45 24"/>
+                <circle cx="14" cy="14" r="5" fill="#FF6A00" fill-opacity="0.2" stroke="#FF6A00" stroke-width="1"/>
+              </svg>
+            </div>
+            <div class="stat-card-label">Dataset Split</div>
+            <div class="dataset-bars" aria-label="Dataset composition">
+              <div class="ds-bar-item">
+                <span class="ds-lang">English</span>
+                <div class="ds-bar-track">
+                  <div class="ds-bar-fill" style="--w: 78%" role="img" aria-label="English: 78 percent"></div>
+                </div>
+                <span class="ds-pct">78%</span>
+              </div>
+              <div class="ds-bar-item">
+                <span class="ds-lang">Hindi</span>
+                <div class="ds-bar-track">
+                  <div class="ds-bar-fill" style="--w: 22%" role="img" aria-label="Hindi: 22 percent"></div>
+                </div>
+                <span class="ds-pct">22%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ PIPELINE SECTION ═══════════════════════ -->
+    <section class="section pipeline-section" id="pipeline" aria-labelledby="pipeline-title">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag">Architecture</div>
+          <h2 class="section-title" id="pipeline-title">Model Pipeline</h2>
+          <p class="section-desc">Five precision-engineered stages from raw text to confident prediction.</p>
+        </div>
+
+        <div class="pipeline-flow reveal-up" role="list" aria-label="Model processing pipeline">
+          <div class="pipeline-stage" role="listitem" tabindex="0" aria-label="Stage 1: User Input">
+            <div class="stage-card">
+              <div class="stage-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <rect x="4" y="6" width="24" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M9 12h14M9 17h10M9 22h7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="stage-num">01</div>
+              <div class="stage-title">User Input</div>
+              <div class="stage-desc">Raw multilingual text</div>
+            </div>
+          </div>
+
+          <div class="pipeline-connector" aria-hidden="true">
+            <div class="connector-line"></div>
+            <div class="connector-arrow">›</div>
+          </div>
+
+          <div class="pipeline-stage" role="listitem" tabindex="0" aria-label="Stage 2: Tokenizer">
+            <div class="stage-card">
+              <div class="stage-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <rect x="3" y="12" width="7" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <rect x="12.5" y="12" width="7" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <rect x="22" y="12" width="7" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M4 9l2-3M9 9l-2-3M13 9l2-3M18 9l-2-3M23 9l2-3M28 9l-2-3" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                </svg>
+              </div>
+              <div class="stage-num">02</div>
+              <div class="stage-title">Tokenizer</div>
+              <div class="stage-desc">SentencePiece encoding</div>
+            </div>
+          </div>
+
+          <div class="pipeline-connector" aria-hidden="true">
+            <div class="connector-line"></div>
+            <div class="connector-arrow">›</div>
+          </div>
+
+          <div class="pipeline-stage" role="listitem" tabindex="0" aria-label="Stage 3: XLM-RoBERTa encoder">
+            <div class="stage-card stage-highlight">
+              <div class="stage-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="16" cy="16" r="7" stroke="currentColor" stroke-width="1" stroke-dasharray="3 2" opacity="0.6"/>
+                  <circle cx="16" cy="16" r="3" fill="currentColor" opacity="0.8"/>
+                  <path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.5"/>
+                </svg>
+              </div>
+              <div class="stage-num">03</div>
+              <div class="stage-title">XLM-RoBERTa</div>
+              <div class="stage-desc">Transformer encoding</div>
+            </div>
+          </div>
+
+          <div class="pipeline-connector" aria-hidden="true">
+            <div class="connector-line"></div>
+            <div class="connector-arrow">›</div>
+          </div>
+
+          <div class="pipeline-stage" role="listitem" tabindex="0" aria-label="Stage 4: Classification head">
+            <div class="stage-card">
+              <div class="stage-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <circle cx="7" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="7" cy="22" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="25" cy="16" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M10.5 10.5L21.5 14.5M10.5 21.5L21.5 17.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+                </svg>
+              </div>
+              <div class="stage-num">04</div>
+              <div class="stage-title">Classification</div>
+              <div class="stage-desc">Linear + Softmax head</div>
+            </div>
+          </div>
+
+          <div class="pipeline-connector" aria-hidden="true">
+            <div class="connector-line"></div>
+            <div class="connector-arrow">›</div>
+          </div>
+
+          <div class="pipeline-stage" role="listitem" tabindex="0" aria-label="Stage 5: Final prediction output">
+            <div class="stage-card stage-prediction">
+              <div class="stage-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path d="M8 17l5 5 11-12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+                </svg>
+              </div>
+              <div class="stage-num">05</div>
+              <div class="stage-title">Prediction</div>
+              <div class="stage-desc">Toxic / Non-Toxic</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ TECH STACK SECTION ═══════════════════════ -->
+    <section class="section tech-section" id="tech" aria-labelledby="tech-title">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag">Engineering</div>
+          <h2 class="section-title" id="tech-title">Technology Stack</h2>
+          <p class="section-desc">Built on the most powerful open-source AI infrastructure available today.</p>
+        </div>
+
+        <div class="tech-grid" role="list" aria-label="Technology stack">
+          <div class="tech-card reveal-up" style="--delay: 0ms" role="listitem" tabindex="0" aria-label="Python programming language">
+            <div class="tech-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <path d="M17.8 3C10.3 3 9 6.2 9 9v3h9v1H6.5C3.5 13 1.2 14.9 1 18c-.2 3.5 0 5.5 2 7 1.3 1 2.8 1.5 5 2l1.5.3V29c0 3 1.8 5 6.3 5H18c4.5 0 6.5-2 6.5-5v-3H15v-1h12.5c3.5 0 6-2 6-6 0-4-2.5-6-6-6H18V9c0-3-2-6-6.3-6H18zM12 7c1 0 2 1 2 2s-1 2-2 2-2-1-2-2 1-2 2-2zm12 16c1 0 2 1 2 2s-1 2-2 2-2-1-2-2 1-2 2-2z" fill="#3776AB" opacity="0.9"/>
+              </svg>
+            </div>
+            <div class="tech-name">Python</div>
+            <div class="tech-role">Core Language</div>
+          </div>
+
+          <div class="tech-card reveal-up" style="--delay: 60ms" role="listitem" tabindex="0" aria-label="PyTorch deep learning framework">
+            <div class="tech-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <circle cx="18" cy="13" r="9" stroke="#EE4C2C" stroke-width="1.8"/>
+                <circle cx="18" cy="13" r="4" fill="#EE4C2C" opacity="0.6"/>
+                <path d="M18 4V2M25 7l2-2M28 13h2M25 19l2 2M18 22v2" stroke="#EE4C2C" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M12 26c0 2.5 5.5 5 8.5 3" stroke="#EE4C2C" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="23" cy="9" r="1.5" fill="#EE4C2C"/>
+              </svg>
+            </div>
+            <div class="tech-name">PyTorch</div>
+            <div class="tech-role">Deep Learning</div>
+          </div>
+
+          <div class="tech-card reveal-up" style="--delay: 120ms" role="listitem" tabindex="0" aria-label="FastAPI web framework">
+            <div class="tech-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <path d="M18 3l-2.5 14h7L10 33l3-16H6z" stroke="#009688" stroke-width="1.5" stroke-linejoin="round" fill="#009688" fill-opacity="0.2"/>
+              </svg>
+            </div>
+            <div class="tech-name">FastAPI</div>
+            <div class="tech-role">REST Backend</div>
+          </div>
+
+          <div class="tech-card reveal-up" style="--delay: 180ms" role="listitem" tabindex="0" aria-label="Hugging Face Transformers library">
+            <div class="tech-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <circle cx="18" cy="14" r="10" stroke="#FFD21E" stroke-width="1.5"/>
+                <path d="M12 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#FFD21E" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                <circle cx="14" cy="16" r="1.5" fill="#FFD21E"/>
+                <circle cx="22" cy="16" r="1.5" fill="#FFD21E"/>
+                <path d="M14 20c1 1.5 7 1.5 8 0" stroke="#FFD21E" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M10 24.5c2 3 12 3 16 0" stroke="#FF6A00" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+              </svg>
+            </div>
+            <div class="tech-name">Transformers</div>
+            <div class="tech-role">NLP Library</div>
+          </div>
+
+          <div class="tech-card reveal-up" style="--delay: 240ms" role="listitem" tabindex="0" aria-label="Hugging Face platform">
+            <div class="tech-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <rect x="4" y="8" width="28" height="22" rx="4" stroke="#FFD21E" stroke-width="1.5"/>
+                <path d="M12 18c0-3 2-5 5-5h2c3 0 5 2 5 5v2c0 3-2 5-5 5h-2c-3 0-5-2-5-5v-2z" stroke="#FFD21E" stroke-width="1.2"/>
+                <circle cx="15" cy="19" r="1" fill="#FFD21E"/>
+                <circle cx="21" cy="19" r="1" fill="#FFD21E"/>
+                <path d="M15 22c1 1 5 1 6 0" stroke="#FFD21E" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="tech-name">Hugging Face</div>
+            <div class="tech-role">Model Hub</div>
+          </div>
+
+          <div class="tech-card reveal-up" style="--delay: 300ms" role="listitem" tabindex="0" aria-label="JavaScript programming language">
+            <div class="tech-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <rect x="3" y="3" width="30" height="30" rx="3" fill="#F7DF1E" fill-opacity="0.15" stroke="#F7DF1E" stroke-width="1.5"/>
+                <path d="M21 25.5c.5 1 1.5 1.5 2.5 1.5 1.5 0 2.5-.8 2.5-2.5v-9h-2.5v9c0 .5-.3.7-.7.7-.4 0-.8-.3-1-.8L21 25.5zM10 25c.8 1.2 2 2 3.8 2 2 0 3.7-1 3.7-3.2 0-1.8-1-2.7-2.8-3.5l-.8-.3c-.8-.4-1.2-.7-1.2-1.3 0-.5.4-.9 1-.9.6 0 1 .3 1.4.9l1.8-1.2c-.8-1.4-1.8-1.8-3.2-1.8-2 0-3.2 1.3-3.2 3 0 1.8.9 2.7 2.5 3.4l.8.3c.9.4 1.4.7 1.4 1.4 0 .7-.5 1-1.3 1-.9 0-1.5-.5-2-1.3L10 25z" fill="#F7DF1E"/>
+              </svg>
+            </div>
+            <div class="tech-name">JavaScript</div>
+            <div class="tech-role">Frontend Logic</div>
+          </div>
+
+          <div class="tech-card reveal-up" style="--delay: 360ms" role="listitem" tabindex="0" aria-label="HTML5 markup language">
+            <div class="tech-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <path d="M5 4l2.5 27L18 34l10.5-3L31 4H5z" stroke="#E44D26" stroke-width="1.5" fill="#E44D26" fill-opacity="0.1"/>
+                <path d="M18 30.5V8.5M10 12h16l-1 11-7 2-7-2-.5-5h3l.3 2.5 4.2 1.2 4.2-1.2.5-4.5H10.5" stroke="#E44D26" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="tech-name">HTML5</div>
+            <div class="tech-role">Structure</div>
+          </div>
+
+          <div class="tech-card reveal-up" style="--delay: 420ms" role="listitem" tabindex="0" aria-label="CSS3 styling language">
+            <div class="tech-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <path d="M5 4l2.5 27L18 34l10.5-3L31 4H5z" stroke="#1572B6" stroke-width="1.5" fill="#1572B6" fill-opacity="0.1"/>
+                <path d="M10.5 12h15l-1 9-6.5 2-6.5-2-.3-3.5h3l.2 1.8 3.6 1 3.6-1L22 16H10.8l-.3-4z" stroke="#1572B6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="tech-name">CSS3</div>
+            <div class="tech-role">Styling</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer" role="contentinfo" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon" aria-hidden="true">◈</span>
+        <span class="logo-text">SENTINEL</span>
+        <p class="footer-tagline">Precision AI for multilingual content moderation.</p>
+      </div>
+      <div class="footer-links" role="list" aria-label="External links">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link magnetic-btn" role="listitem" aria-label="GitHub profile (opens in new tab)">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M9 1.5C4.86 1.5 1.5 4.86 1.5 9c0 3.315 2.152 6.13 5.14 7.12.375.07.513-.163.513-.362 0-.178-.007-.77-.01-1.395-2.09.455-2.531-.9-2.531-.9-.342-.87-.834-1.102-.834-1.102-.681-.465.052-.456.052-.456.753.053 1.15.774 1.15.774.669 1.147 1.757.816 2.185.623.068-.484.261-.816.475-1.003-1.67-.19-3.424-.835-3.424-3.716 0-.82.293-1.492.774-2.017-.078-.19-.336-.954.073-1.99 0 0 .63-.201 2.063.77A7.18 7.18 0 019 5.64c.637.003 1.278.086 1.878.253 1.43-.971 2.06-.77 2.06-.77.41 1.036.152 1.8.075 1.99.483.525.773 1.197.773 2.017 0 2.888-1.757 3.524-3.431 3.71.27.232.51.69.51 1.39 0 1.004-.009 1.814-.009 2.06 0 .201.135.436.516.362C15.35 15.127 17.5 12.313 17.5 9c0-4.14-3.36-7.5-8.5-7.5z" fill="currentColor"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+      <div class="footer-copy">
+        <p>Built with precision. Multilingual Transformer · FastAPI · Vanilla JS</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
