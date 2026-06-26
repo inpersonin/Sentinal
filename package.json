@@ -1,0 +1,6 @@
+{
+  "name": "sentinel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sentinel — Multilingual Hate Speech Detection"
+}
